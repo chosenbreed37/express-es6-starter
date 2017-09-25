@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import logger from './core/logger/app-logger';
 import config from './core/config/config.dev';
 import cars from './routes/cars.route';
+import quotes from './routes/quotes';
 import connectToDb from './db/connect';
 
 const port = config.serverPort;
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev', { stream: logger.stream }));
 
 app.use('/cars', cars);
+app.use('/quotes', quotes);
 
 app.get('/', (req, res) => {
     res.send('Invalid endpoint!');
